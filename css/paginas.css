@@ -352,14 +352,14 @@
 
         .back-button {
             text-decoration: none;
-            color: white;
+            color: rgb(243, 243, 243);
             font-size: 24px;
             height: 40px;
             width: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: #0d3f6b;
             border-radius: 50%;
             transition: var(--transition);
         }
@@ -575,137 +575,81 @@
     }
 }
 
-/* ============================= */
-/* PROJETOS - VERSÃO PRO */
-/* ============================= */
 
-.projects-container {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 0 20px;
+/* Progetos dos labs -paginas */
+
+
+/* CONTAINER DOS CARDS */
+.labs-container{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+/* CARD */
+.lab-card{
+    background: #e6e6e6;
+    width: 320px;
+    padding: 20px;
+    border-radius: 12px;
+    color: #0d2a45;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-}
-
-/* ITEM */
-.project-item {
-    border-radius: 14px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-/* EFEITO HOVER */
-.project-item:hover {
-    border-color: rgba(230, 223, 188, 0.4);
-}
-
-/* ATIVO */
-.project-item.active {
-    border-color: #e6dfbc;
-    box-shadow: 0 10px 30px rgba(11, 63, 107, 0.5);
-}
-
-/* HEADER */
-.project-header {
-    width: 100%;
-    background: transparent;
-    color: white;
-    border: none;
-    padding: 20px;
-    font-size: 16px;
-    text-align: left;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
 /* TITULO */
-.project-header:hover {
-    color: #e6dfbc;
-}
-
-/* ÍCONE */
-.project-header i {
-    transition: transform 0.4s ease;
-    font-size: 14px;
-    opacity: 0.7;
-}
-
-/* CONTEÚDO */
-.project-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: 
-        max-height 0.5s cubic-bezier(0.77, 0, 0.175, 1),
-        padding 0.3s ease;
-    padding: 0 20px;
+.lab-card h3{
+    margin: 0 0 10px 0;
 }
 
 /* TEXTO */
-.project-content p {
-    margin: 0;
-    color: #dbe7f3;
+.lab-card p{
     font-size: 14px;
-    line-height: 1.7;
-    position: relative;
-    z-index: 2; /* 👈 fica acima da imagem */
+    margin-bottom: 20px;
 }
 
-/* ESTADO ATIVO */
-.project-item.active .project-content {
-    max-height: 300px;
-    padding: 0 20px 20px;
+/* RODAPÉ DO CARD */
+.lab-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.project-item.active .project-header i {
-    transform: rotate(180deg);
-    opacity: 1;
+/* STATUS */
+.status{
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
 }
 
-/* LINHA SUAVE */
-.project-item::after {
-    content: "";
-    display: block;
-    height: 1px;
-    background: rgba(255,255,255,0.05);
+/* CORES */
+.andamento{
+    background: #c8e6c9;
+    color: #2e7d32;
 }
 
-/* IMAGEM DO PROJETO */
-.project-item {
-    overflow: hidden; /* mantém fechado escondido */
+.concluido{
+    background: #e0e0e0;
+    color: #555;
 }
 
-.project-content {
-    overflow: hidden; /* escondido quando fechado */
+/* BOTÃO */
+.lab-card button{
+    background: #0d2a45;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-/* IMAGEM */
-.project-content img {
-    width: 100%;
-    max-height: 180px;
-    object-fit: contain;
-    border-radius: 10px;
-    margin-top: 15px;
-    transition: all 0.50s ease;
+.lab-card button:hover{
+    background: #0a1f35;
 }
 
-/* QUANDO ABERTO */
-.project-item.active .project-content {
-    max-height: 1000px;
-    overflow: visible; /* só libera quando aberto */
-}
 
-/* HOVER (EXPANDE COMPLETA) */
-.project-item.active .project-content img:hover {
-    max-height: none;
-    transform: scale(1.05);
-    position: relative;
-    z-index: 1; /* 👈 menor que o texto */
-    margin-bottom: 15px; /* 👈 cria espaço abaixo */
-}
+
+

@@ -27,73 +27,78 @@
 <section class="projects-container">
 
     <!-- PROJETO 1 -->
-    <div class="project-item">
-        <button class="project-header">
-            Sistema Web de Gestão Acadêmica
-            <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="project-content">
-            <img src="img/proj_web.png" alt="Projeto Web">
-            <p>Desenvolvimento de uma plataforma web completa para gerenciamento de alunos, professores, notas e frequência.</p>
+    <div class="labs-container">
+
+    <div class="lab-card">
+        <h3>Sistema de Gestão Acadêmica</h3>
+        <p>Desenvolvimento de plataforma para gestão de cursos e alunos</p>
+
+        <div class="lab-footer">
+            <span class="status andamento">Em andamento</span>
+            <button>Saiba Mais</button>
         </div>
     </div>
 
-    <!-- PROJETO 2 -->
-    <div class="project-item">
-        <button class="project-header">
-            Robô Autônomo para Entrega Interna
-            <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="project-content">
-            <img src="img/proj_robo.png" alt="Robótica">
-            <p>Protótipo de robô autônomo com sensores e visão computacional para navegação em ambientes internos.</p>
+    <div class="lab-card">
+        <h3>App de Sustentabilidade</h3>
+        <p>Aplicativo para conscientização ambiental no campus</p>
+
+        <div class="lab-footer">
+            <span class="status concluido">Concluído</span>
+            <button>Saiba Mais</button>
         </div>
     </div>
 
-    <!-- PROJETO 3 -->
-    <div class="project-item">
-        <button class="project-header">
-            Jogo Educativo Interativo
-            <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="project-content">
-            <img src="img/proj_game.png" alt="Game">
-            <p>Jogo 2D educativo com foco em lógica de programação e gamificação.</p>
+    <div class="lab-card">
+        <h3>Portal do Empreendedor</h3>
+        <p>Plataforma de apoio a startups estudantis</p>
+
+        <div class="lab-footer">
+            <span class="status andamento">Em andamento</span>
+            <button>Saiba Mais</button>
         </div>
     </div>
 
-    <!-- PROJETO 4 -->
-    <div class="project-item">
-        <button class="project-header">
-            Sistema de Análise Preditiva com IA
-            <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="project-content">
-            <img src="img/proj_ia.png" alt="IA">
-            <p>Modelo de machine learning para prever evasão de alunos com base em dados históricos.</p>
-        </div>
-    </div>
+</div>
 
 </section>
 </main>
+
 <script>
-    const items = document.querySelectorAll(".project-item");
+const cards = document.querySelectorAll(".lab-card");
 
-    items.forEach(item => {
-        const header = item.querySelector(".project-header");
+cards.forEach(card => {
+    const button = card.querySelector("button");
 
-        header.addEventListener("click", () => {
-            const isActive = item.classList.contains("active");
+    // Clique no botão
+    button.addEventListener("click", (e) => {
+        e.stopPropagation();
 
-            // Fecha todos
-            items.forEach(i => i.classList.remove("active"));
+        // Remove seleção de todos
+        cards.forEach(c => c.classList.remove("active"));
 
-            // Abre só o clicado (se não estava aberto)
-            if (!isActive) {
-                item.classList.add("active");
-            }
-        });
+        // Ativa o clicado
+        card.classList.add("active");
+
+        // Simula ação (pode trocar depois por modal ou página)
+        alert("Mais detalhes sobre: " + card.querySelector("h3").innerText);
     });
+
+    // Clique no card inteiro
+    card.addEventListener("click", () => {
+        cards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+    });
+
+    // Efeito hover com JS (extra)
+    card.addEventListener("mouseenter", () => {
+        card.style.transform = "translateY(-5px)";
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "translateY(0)";
+    });
+});
 </script>
 </body>
 </html>
