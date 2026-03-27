@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostilas - CEST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/cssDidaticos/d_apostila.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-content">
+            <a href="/didatico.html" class="nav-left">
+                <i class="fas fa-chevron-left"></i>
+                <span>Apostilas e E-books</span>
+            </a>
+            <div class="logo-box">CEST</div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="article-list">
+            
+            <div class="article-item">
+                <div class="item-icon-circle">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="item-info">
+                    <span class="item-name">Apostila de Introdução ao Direito</span>
+                    <span class="item-meta">PDF • 15 de fev.</span>
+                </div>
+                <div class="item-options">
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <button class="btn-fab" id="btnOpen">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <div class="modal-overlay" id="modalContainer">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Adicionar Apostila</h3>
+                <button class="btn-close" id="btnClose">&times;</button>
+            </div>
+            
+            <form class="modal-body">
+                <div class="input-group">
+                    <label>Título da Apostila</label>
+                    <input type="text" placeholder="Ex: Apostila Módulo 01" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Observações</label>
+                    <textarea rows="3" placeholder="Informações adicionais para os alunos..."></textarea>
+                </div>
+
+                <div class="upload-section">
+                    <div class="upload-wrapper">
+                        <div class="upload-circle">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <p>Selecione o arquivo da apostila</p>
+                        <input type="file" class="hidden-file-input">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="btnCancel">Cancelar</button>
+                    <button type="submit" class="btn-primary">Enviar Material</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modalContainer');
+        const btnOpen = document.getElementById('btnOpen');
+        const btnClose = document.getElementById('btnClose');
+        const btnCancel = document.getElementById('btnCancel');
+
+        btnOpen.onclick = () => modal.classList.add('active');
+        const hideModal = () => modal.classList.remove('active');
+        btnClose.onclick = hideModal;
+        btnCancel.onclick = hideModal;
+
+        window.onclick = (event) => {
+            if (event.target == modal) hideModal();
+        }
+    </script>
+</body>
+</html>

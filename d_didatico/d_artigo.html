@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materiais Didáticos - CEST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/cssDidaticos/d_artigo.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-content">
+            <a href="/didatico.html" class="nav-left">
+                <i class="fas fa-chevron-left"></i>
+                <span>Artigos Disponíveis</span>
+            </a>
+            <div class="logo-box">CEST</div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="article-list">
+            
+            <div class="article-item">
+                <div class="item-icon-circle">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="item-info">
+                    <span class="item-name">Referências do Professor</span>
+                    <span class="item-meta">Item postado: 19 de jul.</span>
+                </div>
+                <div class="item-options">
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button class="btn-fab" id="btnOpen">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <div class="modal-overlay" id="modalContainer">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Adicionar Artigo</h3>
+                <button class="btn-close" id="btnClose">&times;</button>
+            </div>
+            
+            <form class="modal-body" id ="formulario">
+                <div class="input-group">
+                    <label>Título</label>
+                    <input type="text" placeholder="Digite o título do artigo..." required>
+                </div>
+
+                <div class="input-group">
+                    <label>Comentário</label>
+                    <textarea rows="3" placeholder="Escreva um comentário sobre o arquivo..."></textarea>
+                </div>
+
+                <div class="upload-section">
+                    <div class="upload-wrapper">
+                        <div class="upload-circle">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <p>Clique ou arraste o arquivo aqui</p>
+                        <input type="file" class="hidden-file-input">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="btnCancel">Cancelar</button>
+                    <button type="submit" class="btn-primary">Postar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modalContainer');
+        const btnOpen = document.getElementById('btnOpen');
+        const btnClose = document.getElementById('btnClose');
+        const btnCancel = document.getElementById('btnCancel');
+
+        btnOpen.onclick = () => modal.classList.add('active');
+        
+        const hideModal = () => modal.classList.remove('active');
+        btnClose.onclick = hideModal;
+        btnCancel.onclick = hideModal;
+
+        window.onclick = (event) => {
+            if (event.target == modal) hideModal();
+        }
+    </script>
+</body>
+</html>

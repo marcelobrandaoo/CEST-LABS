@@ -1,0 +1,174 @@
+/* --- CONFIGURAÇÕES BASE --- */
+:root {
+    --primary-dark: #001f33;
+    --nav-blue: #1b4d79;
+    --white: #ffffff;
+    --gray-bg: #f8f9fa;
+    --gray-text: #5f6368;
+    --border-color: #e0e0e0;
+    --google-blue: #1a73e8;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: var(--primary-dark);
+}
+
+/* NAVBAR */
+.navbar { 
+    background-color: var(--nav-blue); 
+    color: white; 
+    padding: 12px 24px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+}
+.nav-content { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.nav-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    font-size: 18px; 
+    color: white; 
+    text-decoration: none; 
+    cursor: pointer; 
+}
+.logo-box { 
+    border: 2px solid white; 
+    padding: 4px 12px; 
+    border-radius: 4px; 
+    font-weight: bold; 
+}
+
+/* LISTAGEM */
+.main-container { 
+    max-width: 800px; 
+    margin: 40px auto; 
+    padding: 0 20px; 
+}
+.article-list { 
+    background: var(--white); 
+    border-radius: 8px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+    overflow: hidden; 
+}
+.article-item { 
+    display: flex; 
+    align-items: center; 
+    padding: 16px 20px; 
+    border-bottom: 1px solid var(--border-color); 
+    transition: 0.2s; 
+    cursor: pointer; 
+}
+.article-item:hover { background-color: #f1f3f4; }
+.article-item:last-child { border-bottom: none; }
+
+.item-icon-circle { 
+    width: 40px; 
+    height: 40px; 
+    background-color: #bdc1c6; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    margin-right: 15px; 
+    flex-shrink: 0; 
+}
+.item-info { 
+    flex-grow: 1; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.item-name { font-size: 14px; font-weight: 500; color: #3c4043; }
+.item-meta { font-size: 13px; color: var(--gray-text); }
+.item-options { margin-left: 20px; color: var(--gray-text); padding: 8px; }
+
+/* BOTÃO FLUTUANTE (FAB) */
+.btn-fab { 
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    width: 56px; 
+    height: 56px; 
+    border-radius: 50%; 
+    background-color: var(--white); 
+    border: none; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4); 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 99; 
+}
+.btn-fab i { 
+    font-size: 24px; 
+    background: linear-gradient(45deg, #4285f4, #34a853, #fcc934, #ea4335); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
+/* MODAL */
+.modal-overlay { 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.7); 
+    display: none; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1000; 
+}
+.modal-overlay.active { display: flex; }
+.modal-box { 
+    background: var(--white); 
+    width: 90%; 
+    max-width: 450px; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    animation: slideUp 0.3s ease; 
+}
+@keyframes slideUp { 
+    from { transform: translateY(30px); opacity: 0; } 
+    to { transform: translateY(0); opacity: 1; } 
+}
+.modal-header { 
+    padding: 15px 20px; 
+    border-bottom: 1px solid var(--border-color); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.btn-close { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--gray-text); }
+.modal-body { padding: 25px; }
+.input-group { margin-bottom: 20px; }
+.input-group label { 
+    display: block; 
+    font-size: 13px; 
+    font-weight: 600; 
+    margin-bottom: 8px; 
+    color: var(--primary-dark); 
+}
+.input-group input, .input-group textarea { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid var(--border-color); 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    font-family: inherit; 
+}
+
+.modal-footer { 
+    display: flex; 
+    justify-content: flex-end; 
+    gap: 12px; 
+    margin-top: 25px; 
+}
+.btn-secondary { background: #f1f3f4; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 500; }
+.btn-primary { background: var(--google-blue); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 500; }
