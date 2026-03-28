@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escritório Escola - CEST</title>
-    <link rel="stylesheet" href="css/style-geral.css">
+    <link rel="stylesheet" th:href="@{/css/style-geral.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
 </head>
@@ -16,32 +16,32 @@
         <h1>Escritório Escola</h1>
 
         <div class="grid-container">
-            <a href="projetoslab.html" class="card">
+            <a href="@{/projetos}" class="card">
     <div class="card-icon"><i class="fa-solid fa-flask"></i></div>
     <div class="card-title">Projetos dos labs</div>
         </a>
 
-        <a href="responsaveis.html" class="card">
+        <a th:href="@{/responsaveis}" class="card">
             <div class="card-icon"><i class="fa-solid fa-users"></i></div>
             <div class="card-title">Responsáveis</div>
         </a>
 
-        <a href="obj.html" class="card">
+        <a th:href="@{/objetivos}" class="card">
             <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
             <div class="card-title">Objetivos</div>
         </a>
 
-        <a href="indicação.html" class="card">
+        <a th:href="@{/indicacao}" class="card">
             <div class="card-icon"><i class="fa-solid fa-clipboard-list"></i></div>
             <div class="card-title">Formulário de indicação</div>
         </a>
 
-        <a href="didatico.html" class="card">
+        <a th:href="@{/didatico}" class="card">
             <div class="card-icon"><i class="fa-solid fa-book"></i></div>
             <div class="card-title">Material didático</div>
         </a>
 
-        <a href="login.html" class="card">
+        <a th:href="@{/login}" class="card">
             <div class="card-icon"><i class="fa-solid fa-lock"></i></div>
             <div class="card-title">Sistema Interno</div>
         </a>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
 
 <meta charset="UTF-8">
@@ -7,8 +7,8 @@
 
 <title>Indique sua ideia de projeto</title>
 
-<link rel="stylesheet" href="css/style-geral.css">
-<link rel="stylesheet" href="css/paginas.css">
+    <link rel="stylesheet" th:href="@{/css/style-geral.css}">
+    <link rel="stylesheet" th:href="@{/css/paginas.css}">
 
 </head>
 
@@ -22,7 +22,7 @@
 
 <div class="form-header">
 
-<a href="home.html" class="back-button">
+<a th:href="@{/}" class="back-button">
 &#10094;
 </a>
 
