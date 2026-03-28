@@ -41,4 +41,19 @@ public class sessionController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("/apostilas")
+    public String apostilas() {
+        return "materiais/d_apostila";
+    }
+
+    @GetMapping("/artigos")
+    public String artigos() {
+        return "materiais/d_artigo";
+    }
+
+    @GetMapping("/vaulas")
+    public String vaulas() {
+        return "materiais/d_videoaula";
+    }
 }

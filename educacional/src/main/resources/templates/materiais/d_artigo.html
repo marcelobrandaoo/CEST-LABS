@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Materiais Didáticos - CEST</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/cssDidaticos/d_artigo.css">
+    <link rel="stylesheet" th:href="@{/css/cssDidaticos/d_artigo.css}">
 </head>
 <body>
 
     <header class="navbar">
         <div class="nav-content">
-            <a href="/didatico.html" class="nav-left">
+            <a th:href="@{/didatico}" class="nav-left">
                 <i class="fas fa-chevron-left"></i>
                 <span>Artigos Disponíveis</span>
             </a>
