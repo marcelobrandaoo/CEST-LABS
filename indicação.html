@@ -15,43 +15,34 @@
 <body>
 
 <div class="form-header">
-
-<a href="home.html" class="back-button">
-&#10094;
-</a>
-
+<a href="home.html" class="back-button">&#10094;</a>
 <h2>Indique sua ideia de projeto</h2>
-
 </div>
 
 <main class="page-form">
-
 <div class="form-container">
 
-<form>
+<form id="formProjeto">
 
 <div class="form-group">
 <label>Nome Completo</label>
-
 <div class="input-row">
-<input type="text" placeholder="ex: Marcelo Brandão">
+<input type="text" id="nome" placeholder="ex: Marcelo Brandão">
 </div>
 </div>
 
 <div class="form-group">
 <label>Email Institucional</label>
-
 <div class="input-row">
-<input type="email" placeholder="ex: marcelo@cest.edu.br">
+<input type="email" id="email" placeholder="ex: marcelo@cest.edu.br">
 </div>
 </div>
 
 <div class="form-group">
-<label>Periodo</label>
-
+<label>Período</label>
 <div class="input-row">
-<select>
-<option>Selecione</option>
+<select id="periodo">
+<option value="">Selecione</option>
 <option>1º Periodo</option>
 <option>2º Periodo</option>
 <option>3º Periodo</option>
@@ -66,9 +57,8 @@
 
 <div class="form-group">
 <label>Descrição do projeto</label>
-
 <div class="input-row">
-<textarea placeholder="Descreva seu projeto..."></textarea>
+<textarea id="descricao" placeholder="Descreva seu projeto..."></textarea>
 </div>
 </div>
 
@@ -79,8 +69,56 @@
 </form>
 
 </div>
-
 </main>
 
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDhmSUutqVqj__x_mcGV3WBswtrJq_5qWY",
+  authDomain: "cest-projeto.firebaseapp.com",
+  projectId: "cest-projeto",
+  storageBucket: "cest-projeto.firebasestorage.app",
+  messagingSenderId: "483178311193",
+  appId: "1:483178311193:web:0e34df7c1bcc61e193c488"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.getElementById("formProjeto").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const periodo = document.getElementById("periodo").value;
+    const descricao = document.getElementById("descricao").value;
+
+    if (!nome || !email || !periodo || !descricao) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    try {
+        await addDoc(collection(db, "projetos"), {
+            nome,
+            email,
+            periodo,
+            descricao,
+            criadoEm: new Date()
+        });
+
+        alert("Projeto enviado com sucesso!");
+        document.getElementById("formProjeto").reset();
+
+    } catch (erro) {
+        console.error(erro);
+        alert("Erro ao enviar projeto");
+    }
+});
+
+</script>
 </body>
 </html>

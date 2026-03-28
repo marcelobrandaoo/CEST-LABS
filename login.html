@@ -25,13 +25,13 @@
 Acesso exclusivo para internos do Escritório Escola
 </p>
 
-<form>
+<form id="formLogin">
 
 <label>E-mail</label>
-<input type="text">
+<input type="email" id="email">
 
 <label>Senha</label>
-<input type="password">
+<input type="password" id="senha">
 
 <button type="submit">Entrar</button>
 
@@ -39,5 +39,53 @@ Acesso exclusivo para internos do Escritório Escola
 
 </div>
 
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDhmSUutqVqj__x_mcGV3WBswtrJq_5qWY",
+  authDomain: "cest-projeto.firebaseapp.com",
+  projectId: "cest-projeto",
+  storageBucket: "cest-projeto.firebasestorage.app",
+  messagingSenderId: "483178311193",
+  appId: "1:483178311193:web:0e34df7c1bcc61e193c488"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+document.getElementById("formLogin").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+
+    if (!email || !senha) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    try {
+        await signInWithEmailAndPassword(auth, email, senha);
+
+        alert("Login realizado com sucesso!");
+        window.location.href = "home.html";
+
+    } catch (erro) {
+        console.error(erro);
+
+        if (erro.code === "auth/user-not-found") {
+            alert("Usuário não encontrado");
+        } else if (erro.code === "auth/wrong-password") {
+            alert("Senha incorreta");
+        } else {
+            alert("Erro no login");
+        }
+    }
+});
+
+</script>
 </body>
 </html>

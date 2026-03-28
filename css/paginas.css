@@ -124,17 +124,47 @@
 .submit-area button:hover{
     background-color: #0a2f52;
     transform: scale(1.05);
-}
+}m
 
 /* PAGINA LOGIN */
+/* RESET BÁSICO */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-.login-page{
+/* BODY PADRÃO */
+body{
+    background-color: #f4f6f9;
+}
+
+/* ========================= */
+/* 🔐 PÁGINA LOGIN */
+/* ========================= */
+
+body.login-page{
     background-color: #001f3f;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    height: 100vh;
 }
 
+/* Botão voltar */
+.back-login{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Container do login */
 .login-container{
     background-color: #e6e6e6;
     padding: 40px;
@@ -142,10 +172,12 @@
     border-radius: 12px;
     text-align: center;
     color: #0d2a45;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .login-container h2{
-    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .login-subtitle{
@@ -153,6 +185,7 @@
     margin-bottom: 25px;
 }
 
+/* Labels */
 .login-container label{
     display: block;
     text-align: left;
@@ -160,18 +193,125 @@
     font-weight: bold;
 }
 
+/* Inputs */
 .login-container input{
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 8px;
     border: 1px solid #bbb;
+    outline: none;
 }
 
+.login-container input:focus{
+    border-color: #001f3f;
+}
+
+/* Botão */
 .login-container button{
     width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #001f3f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+.login-container button:hover{
+    background-color: #003366;
+}
+
+/* ========================= */
+/* 📝 FORMULÁRIO */
+/* ========================= */
+
+.form-header{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #001f3f;
+    color: white;
+}
+
+.back-button{
+    margin-right: 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+}
+
+/* Área principal */
+.page-form{
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Container do formulário */
+.form-container{
+    background-color: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Grupo de campos */
+.form-group{
+    margin-bottom: 20px;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-row input,
+.input-row select,
+.input-row textarea{
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.input-row textarea{
+    resize: none;
+    height: 100px;
+}
+
+.input-row input:focus,
+.input-row select:focus,
+.input-row textarea:focus{
+    border-color: #001f3f;
+}
+
+/* Botão enviar */
+.submit-area{
+    text-align: center;
+}
+
+.submit-area button{
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: #001f3f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-area button:hover{
+    background-color: #003366;
+}
 /* BOTÃO VOLTAR */
 
 .back-login{
