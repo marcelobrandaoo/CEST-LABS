@@ -12,12 +12,6 @@ public class sessionController {
         return "didatico";
     }
 
-    // Rota para Formulário de Indicação
-    @GetMapping("/indicacao")
-    public String indicacao() {
-        return "indicacao";
-    }
-
     @GetMapping("/projetos")
     public String projetos() {
         return "projetoslab";
@@ -31,11 +25,6 @@ public class sessionController {
     @GetMapping("/objetivos")
     public String objetivos() {
         return "obj";
-    }
-
-    @GetMapping("/artigos")
-    public String artigos() {
-        return "materiais/d_artigo";
     }
 
     @GetMapping("/vaulas")

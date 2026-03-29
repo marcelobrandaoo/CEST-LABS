@@ -27,4 +27,16 @@ public class loginController {
         model.addAttribute("firebase", firebaseConfig); // firebaseConfig deve estar @Autowired aqui também
         return "materiais/d_apostila";
     }
+
+    @GetMapping("/indicacao")
+    public String indicacao(Model model) {
+        model.addAttribute("firebase", firebaseConfig);
+        return "indicacao";
+    }
+
+    @GetMapping("/artigos")
+    public String artigos(Model model) {
+        model.addAttribute("firebase", firebaseConfig);
+        return "materiais/d_artigo";
+    }
 }

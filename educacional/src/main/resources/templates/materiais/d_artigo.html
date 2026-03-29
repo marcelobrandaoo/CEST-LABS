@@ -77,14 +77,28 @@
         </div>
     </div>
 
-    <script>
+    <script type="module" th:inline="javascript">
+        import { configurarArtigos } from '/js/upload-artigo.js';
+
+        const config = {
+            apiKey: [[${firebase.apiKey}]],
+            authDomain: [[${firebase.authDomain}]],
+            projectId: [[${firebase.projectId}]],
+            storageBucket: [[${firebase.storageBucket}]],
+            messagingSenderId: [[${firebase.messagingSenderId}]],
+            appId: [[${firebase.appId}]]
+        };
+
+        // Inicializa a lógica do Firebase
+        configurarArtigos(config);
+
+        // Lógica de UI do Modal
         const modal = document.getElementById('modalContainer');
         const btnOpen = document.getElementById('btnOpen');
         const btnClose = document.getElementById('btnClose');
         const btnCancel = document.getElementById('btnCancel');
 
         btnOpen.onclick = () => modal.classList.add('active');
-        
         const hideModal = () => modal.classList.remove('active');
         btnClose.onclick = hideModal;
         btnCancel.onclick = hideModal;
