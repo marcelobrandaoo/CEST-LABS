@@ -1,40 +1,22 @@
 <!DOCTYPE html>
-<<<<<<< HEAD:responsaveis.html
-<html lang="pt-br">
-=======
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
->>>>>>> teste:educacional/src/main/resources/templates/responsaveis.html
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsáveis pelos Labs - CEST</title>
 
-<<<<<<< HEAD:responsaveis.html
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Responsáveis pelos Labs</title>
-
-<link rel="stylesheet" href="css/style-geral.css">
-<link rel="stylesheet" href="css/paginas.css">
-
-<!-- Ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-=======
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style-geral.css}">
     <link rel="stylesheet" th:href="@{/css/paginas.css}">
-    
->>>>>>> teste:educacional/src/main/resources/templates/responsaveis.html
 </head>
 
 <body>
 
 <header class="labs-header">
     <div class="header-left">
-<<<<<<< HEAD:responsaveis.html
-        <a href="home.html" class="back-icon">
-=======
         <a th:href="@{/}" class="back-icon" title="Voltar">
->>>>>>> teste:educacional/src/main/resources/templates/responsaveis.html
             <i class="fas fa-arrow-left"></i>
         </a>
         <h1>Responsáveis por Cada Lab</h1>
@@ -42,47 +24,36 @@
 </header>
 
 <main class="team-page">
+    <div class="team-container">
 
-<div class="team-container">
-
-    <!-- PESSOA 1 -->
-    <div class="team-card">
-        <div class="avatar">
-            <i class="fas fa-user"></i>
+        <div class="team-card">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h3>Prof. Dr. João Silva</h3>
+            <p>Coordenador Geral</p>
+            <i class="fas fa-envelope email-icon" title="Enviar e-mail"></i>
         </div>
 
-        <h3>Prof. Dr. João Silva</h3>
-        <p>Coordenador Geral</p>
-
-        <i class="fas fa-envelope email-icon"></i>
-    </div>
-
-    <!-- PESSOA 2 -->
-    <div class="team-card">
-        <div class="avatar">
-            <i class="fas fa-user"></i>
+        <div class="team-card">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h3>Prof. Dra. Maria Santos</h3>
+            <p>Lab de Inovação</p>
+            <i class="fas fa-envelope email-icon" title="Enviar e-mail"></i>
         </div>
 
-        <h3>Prof. Dra. Maria Santos</h3>
-        <p>Lab de Inovação</p>
-
-        <i class="fas fa-envelope email-icon"></i>
-    </div>
-
-    <!-- PESSOA 3 -->
-    <div class="team-card">
-        <div class="avatar">
-            <i class="fas fa-user"></i>
+        <div class="team-card">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h3>Prof. Dr. Carlos Lima</h3>
+            <p>Lab de Pesquisa</p>
+            <i class="fas fa-envelope email-icon" title="Enviar e-mail"></i>
         </div>
 
-        <h3>Prof. Dr. Carlos Lima</h3>
-        <p>Lab de Pesquisa</p>
-
-        <i class="fas fa-envelope email-icon"></i>
     </div>
-
-</div>
-
 </main>
 
 </body>
