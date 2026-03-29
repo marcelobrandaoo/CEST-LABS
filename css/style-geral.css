@@ -94,3 +94,314 @@ button:hover {
     font-size: 14px;
     text-align: center;
 }
+/* CONTAINER GERAL */
+.sobre{
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* TITULO */
+.sobre h1{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* BLOCOS */
+.bloco{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* ÍCONE */
+.icon{
+    font-size: 30px;
+}
+
+/* TEXTO */
+.conteudo h2{
+    margin-bottom: 10px;
+}
+
+.conteudo p{
+    line-height: 1.5;
+}
+
+/* NÚMEROS */
+.numeros{
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.numeros div{
+    text-align: center;
+}
+
+.numeros strong{
+    font-size: 20px;
+    display: block;
+}
+
+/* LISTA */
+ul{
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+/* MISSÃO */
+.missao{
+    text-align: center;
+    margin: 40px 0;
+}
+
+/* CTA */
+.cta{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.botoes{
+    margin-top: 20px;
+}
+
+.btn-primary{
+    background: #0d3f6b;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn-secondary{
+    border: 2px solid white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+}
+/* NAVBAR MODERNA */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 40px;
+
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* LOGO */
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* MENU */
+.menu{
+    display: flex;
+    gap: 25px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    position: relative;
+    font-size: 16px;
+    
+}
+
+/* EFEITO LINHA */
+.menu a::after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: white;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.menu a:hover::after{
+    width: 100%;
+}
+
+/* BOTÕES DIREITA */
+.actions{
+    display: flex;
+    gap: 10px;
+}
+
+/* BOTÃO TRANSPARENTE */
+.btn-outline{
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-solid{
+    background: white;
+    color: #001f3f;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* HERO */
+.hero-image{
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+}
+
+/* IMAGEM ANIMADA */
+.hero-image::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: url("../img/hero.jpg") center/cover no-repeat;
+
+    animation: zoomHero 15s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+/* ZOOM */
+@keyframes zoomHero{
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.1);
+    }
+}
+
+/* OVERLAY */
+.overlay{
+    position: relative;
+    z-index: 1;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.8)
+    );
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TEXTO HERO */
+.overlay h1{
+    font-size: 42px;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeDown 1s ease forwards;
+}
+
+.overlay p{
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.3s;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeDown{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*rodapé*/ 
+/* FOOTER */
+.footer{
+    background-color: #002b5c;
+    padding: 40px 20px 20px;
+    margin-top: 40px;
+}
+
+/* CONTAINER */
+.footer-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
+    gap: 20px;
+}
+
+/* COLUNAS */
+.footer-col{
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-col h3,
+.footer-col h4{
+    margin-bottom: 15px;
+}
+
+/* LINKS */
+.footer-col a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.footer-col a:hover{
+    text-decoration: underline;
+}
+
+/* REDES */
+.social i{
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.social i:hover{
+    color: #ccc;
+}
+
+/* PARTE FINAL */
+.footer-bottom{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    opacity: 0.7;
+}
