@@ -5,10 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class sessionController {
-    @GetMapping("/")
-    public String inicial() {
-        return "home"; // Busca templates/home.html
-    }
 
     // Rota para Material Didático
     @GetMapping("/didatico")
@@ -35,16 +31,6 @@ public class sessionController {
     @GetMapping("/objetivos")
     public String objetivos() {
         return "obj";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/apostilas")
-    public String apostilas() {
-        return "materiais/d_apostila";
     }
 
     @GetMapping("/artigos")

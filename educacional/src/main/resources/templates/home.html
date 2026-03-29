@@ -36,7 +36,7 @@
             <div class="card-title">Formulário de indicação</div>
         </a>
 
-        <a th:href="@{/didatico}" class="card">
+        <a th:href="@{/didatico}" id="card-material-didatico" style="display: none;" class="card">
             <div class="card-icon"><i class="fa-solid fa-book"></i></div>
             <div class="card-title">Material didático</div>
         </a>
@@ -47,6 +47,38 @@
         </a>
         </div>
     </main>
+
+    <script type="module" th:inline="javascript">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+        const firebaseConfig = {
+          apiKey: [[${firebase.apiKey}]],
+          authDomain: [[${firebase.authDomain}]],
+          projectId: [[${firebase.projectId}]],
+          storageBucket: [[${firebase.storageBucket}]],
+          messagingSenderId: [[${firebase.messagingSenderId}]],
+          appId: [[${firebase.appId}]]
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // O 'onAuthStateChanged' escuta se existe um usuário logado no navegador
+        onAuthStateChanged(auth, (user) => {
+          const cardMaterial = document.getElementById('card-material-didatico');
+
+          if (user) {
+            // Se o usuário existir (logado), mostramos o card
+            cardMaterial.style.display = 'block';
+            console.log("Usuário logado:", user.email);
+          } else {
+            // Se não houver usuário, garantimos que o card fique escondido
+            cardMaterial.style.display = 'none';
+            console.log("Nenhum usuário logado.");
+          }
+        });
+    </script>
 
 </body>
 </html>

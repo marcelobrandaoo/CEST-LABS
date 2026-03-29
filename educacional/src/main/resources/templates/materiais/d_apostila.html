@@ -21,20 +21,6 @@
 
     <main class="main-container">
         <div class="article-list">
-            
-            <div class="article-item">
-                <div class="item-icon-circle">
-                    <i class="fas fa-book-open"></i>
-                </div>
-                <div class="item-info">
-                    <span class="item-name">Apostila de Introdução ao Direito</span>
-                    <span class="item-meta">PDF • 15 de fev.</span>
-                </div>
-                <div class="item-options">
-                    <i class="fas fa-ellipsis-v"></i>
-                </div>
-            </div>
-
         </div>
     </main>
 
@@ -49,15 +35,15 @@
                 <button class="btn-close" id="btnClose">&times;</button>
             </div>
             
-            <form class="modal-body">
+            <form class="modal-body" id="formMaterial">
                 <div class="input-group">
                     <label>Título da Apostila</label>
-                    <input type="text" placeholder="Ex: Apostila Módulo 01" required>
+                    <input type="text" id="titulo" placeholder="Ex: Apostila Módulo 01" required>
                 </div>
 
                 <div class="input-group">
                     <label>Observações</label>
-                    <textarea rows="3" placeholder="Informações adicionais para os alunos..."></textarea>
+                    <textarea id="observacoes" rows="3" placeholder="Informações adicionais para os alunos..."></textarea>
                 </div>
 
                 <div class="upload-section">
@@ -66,7 +52,7 @@
                             <i class="fas fa-upload"></i>
                         </div>
                         <p>Selecione o arquivo da apostila</p>
-                        <input type="file" class="hidden-file-input">
+                        <input type="file" id="arquivoInput" class="hidden-file-input">
                     </div>
                 </div>
 
@@ -78,20 +64,49 @@
         </div>
     </div>
 
-    <script>
+    <script type="module" th:inline="javascript">
+        import { configurarFirebase } from './js/upload-material.js';
+
+        // Captura as variáveis do Java/Thymeleaf
+        const config = {
+            apiKey: [[${firebase.apiKey}]],
+            authDomain: [[${firebase.authDomain}]],
+            projectId: [[${firebase.projectId}]],
+            storageBucket: [[${firebase.storageBucket}]],
+            messagingSenderId: [[${firebase.messagingSenderId}]],
+            appId: [[${firebase.appId}]]
+        };
+
+        // Inicializa a lógica externa
+        configurarFirebase(config);
+
+        // Lógica do Modal (pode continuar aqui ou também ir para um JS de UI)
+        document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('modalContainer');
         const btnOpen = document.getElementById('btnOpen');
         const btnClose = document.getElementById('btnClose');
         const btnCancel = document.getElementById('btnCancel');
 
-        btnOpen.onclick = () => modal.classList.add('active');
-        const hideModal = () => modal.classList.remove('active');
-        btnClose.onclick = hideModal;
-        btnCancel.onclick = hideModal;
+        if (btnOpen && modal) {
+               btnOpen.onclick = () => {
+                    modal.classList.add('active');
+                };
 
-        window.onclick = (event) => {
-            if (event.target == modal) hideModal();
-        }
+                const hideModal = () => {
+                    modal.classList.remove('active');
+                };
+
+                btnClose.onclick = hideModal;
+                btnCancel.onclick = hideModal;
+
+                // Fecha se clicar fora da caixa branca
+                window.onclick = (event) => {
+                    if (event.target == modal) hideModal();
+                };
+            } else {
+                console.error("Botão btnOpen ou modalContainer não encontrados no HTML!");
+            }
+        });
     </script>
 </body>
 </html>

@@ -25,19 +25,67 @@
 Acesso exclusivo para internos do Escritório Escola
 </p>
 
-<form>
+<form id="formLogin">
 
 <label>E-mail</label>
-<input type="text">
+<input type="text"  id="email">
 
 <label>Senha</label>
-<input type="password">
+<input type="password" id="senha">
 
 <button type="submit">Entrar</button>
 
 </form>
 
 </div>
+
+<script type="module" th:inline="javascript">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: [[${firebase.apiKey}]],
+      authDomain: [[${firebase.authDomain}]],
+      projectId: [[${firebase.projectId}]],
+      storageBucket: [[${firebase.storageBucket}]],
+      messagingSenderId: [[${firebase.messagingSenderId}]],
+      appId: [[${firebase.appId}]]
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Selecionando o formulário (já que ele não tem ID no seu HTML)
+    const loginForm = document.getElementById('formLogin');
+
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const senha = document.getElementById("senha").value;
+
+        if (!email || !senha) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
+        try {
+            await signInWithEmailAndPassword(auth, email, senha);
+            alert("Login realizado com sucesso!");
+
+            // Redireciona para a home. O script da home vai detectar o 'user' logado.
+            window.location.href = "/"; // Ou "home.html" dependendo da sua rota
+        } catch (erro) {
+            console.error("Erro detalhado:", erro.code);
+            // O Firebase atualizou os códigos de erro, o mais comum agora é 'auth/invalid-credential'
+            if (erro.code === "auth/invalid-credential" || erro.code === "auth/user-not-found" || erro.code === "auth/wrong-password") {
+                alert("E-mail ou senha incorretos.");
+            } else {
+                alert("Erro ao tentar fazer login.");
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
