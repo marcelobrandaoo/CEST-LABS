@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escritório Escola - CEST</title>
 
-    <link rel="stylesheet" href="css/style-geral.css">
+    <link rel="stylesheet" th:href="@{/css/style-geral.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
 </head>
-
 <body>
 
-<header class="navbar">
+   
+
+    <header class="navbar">
 
     <div class="logo">Escritório Escola</div>
 
     <nav class="menu">
-        <a href="projetoslab.html">Labs</a>
-        <a href="responsaveis.html">Responsáveis</a>
-        <a href="obj.html">Objetivos</a>
-        <a href="didatico.html">Materiais</a>
+        <a th:href="@{/projetos}">Labs</a>
+        <a th:href="@{/responsaveis}">Responsáveis</a>
+        <a th:href="@{/objetivos}">Objetivos</a>
+        <a th:href="@{/didatico}" style="display: none;" id="card-material-didatico">Materiais</a>
     </nav>
 
     <div class="actions">
-        <a href="indicação.html" class="btn-outline">Indicar Projeto</a>
-        <a href="login.html" class="btn-solid">Login</a>
+        <a th:href="@{/indicacao}" class="btn-outline">Indicar Projeto</a>
+        <a th:href="@{/login}" class="btn-solid">Login</a>
     </div>
 
 </header>
@@ -103,8 +105,8 @@
     <p>Interessado em participar dos nossos projetos?</p>
 
     <div class="botoes">
-        <a href="indicação.html" class="btn-primary">Indicar Projeto</a>
-        <a href="login.html" class="btn-secondary">Entrar em Contato</a>
+        <a th:href="@{/indicacao}" class="btn-primary">Indicar Projeto</a>
+        <a th:href="@{/login}" class="btn-secondary">Entrar em Contato</a>
     </div>
 </section>
 
@@ -120,10 +122,10 @@
 
         <div class="footer-col">
             <h4>Links</h4>
-            <a href="projetoslab.html">Labs</a>
-            <a href="responsaveis.html">Responsáveis</a>
-            <a href="obj.html">Objetivos</a>
-            <a href="didatico.html">Materiais</a>
+            <a th:href="@{/projetos}">Labs</a>
+            <a th:href="@{/responsaveis}">Responsáveis</a>
+            <a th:href="@{/objetivos}">Objetivos</a>
+            <a th:href="@{/didatico}" style="display: none;" id="card-material-didatico">Materiais</a>
         </div>
 
         <div class="footer-col">
@@ -150,20 +152,49 @@
 </footer>vvvv
 
 <!-- ✅ SCRIPT NO LUGAR CERTO -->
-<script>
-const elements = document.querySelectorAll('.hidden');
+    <script type="module" th:inline="javascript">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-            observer.unobserve(entry.target); // anima só uma vez
-        }
-    });
-});
+        const elements = document.querySelectorAll('.hidden');
 
-elements.forEach(el => observer.observe(el));
-</script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // anima só uma vez
+                }
+            });
+        });
+
+        elements.forEach(el => observer.observe(el));
+
+        const firebaseConfig = {
+          apiKey: [[${firebase.apiKey}]],
+          authDomain: [[${firebase.authDomain}]],
+          projectId: [[${firebase.projectId}]],
+          storageBucket: [[${firebase.storageBucket}]],
+          messagingSenderId: [[${firebase.messagingSenderId}]],
+          appId: [[${firebase.appId}]]
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // O 'onAuthStateChanged' escuta se existe um usuário logado no navegador
+        onAuthStateChanged(auth, (user) => {
+          const linksMaterial = document.querySelectorAll('[id="card-material-didatico"]');
+
+          if (user) {
+                linksMaterial.forEach(link => link.style.display = 'inline-block');
+                console.log("Usuário logado:", user.email);
+            } else {
+                linksMaterial.forEach(link => link.style.display = 'none');
+                console.log("Nenhum usuário logado.");
+            }
+        });
+
+    </script>
 
 </body>
 </html>

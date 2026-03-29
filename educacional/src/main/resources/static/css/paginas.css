@@ -836,6 +836,7 @@ body.login-page{
 
 .lab-card button:hover{
     background: #0a1f35;
+<<<<<<< HEAD:css/paginas.css
 }
 
 
@@ -902,3 +903,6 @@ body.login-page{
     transform: scale(1.2);
 }
 
+=======
+}
+>>>>>>> teste:educacional/src/main/resources/static/css/paginas.css

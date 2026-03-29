@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Indique sua ideia de projeto</title>
+
+    <link rel="stylesheet" th:href="@{/css/style-geral.css}">
+    <link rel="stylesheet" th:href="@{/css/paginas.css}">
+
+</head>
+
+<body>
+
+<header>
+<div class="logo">CEST</div>
+<div class="user-icon">Indique sua ideia de projeto</div>
+
+</header>
+
+<div class="form-header">
+
+<a th:href="@{/}" class="back-button">
+&#10094;
+</a>
+
+<h2>Indique sua ideia de projeto</h2>
+
+</div>
+<main class="page-form">
+
+<div class="form-container">
+
+    <form id="formProjeto">
+
+        <div class="form-group">
+            <label>Nome Completo</label>
+            <div class="input-row">
+                <input type="text" id="nome" placeholder="ex: Marcelo Brandão" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Email Institucional</label>
+            <div class="input-row">
+                <input type="email" id="email" placeholder="ex: marcelo@cest.edu.br" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Periodo</label>
+            <div class="input-row">
+                <select id="periodo" required>
+                    <option value="">Selecione</option>
+                    <option>1º Periodo</option>
+                    <option>2º Periodo</option>
+                    <option>3º Periodo</option>
+                    <option>4º Periodo</option>
+                    <option>5º Periodo</option>
+                    <option>6º Periodo</option>
+                    <option>7º Periodo</option>
+                    <option>8º Periodo</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Descrição do projeto</label>
+            <div class="input-row">
+                <textarea id="descricao" placeholder="Descreva seu projeto..." required></textarea>
+            </div>
+        </div>
+
+        <div class="submit-area">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+</div>
+
+</main>
+
+<script type="module" th:inline="javascript">
+    // 1. Importações necessárias (Firestore adicionado)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: [[${firebase.apiKey}]],
+      authDomain: [[${firebase.authDomain}]],
+      projectId: [[${firebase.projectId}]],
+      storageBucket: [[${firebase.storageBucket}]],
+      messagingSenderId: [[${firebase.messagingSenderId}]],
+      appId: [[${firebase.appId}]]
+    };
+
+    // 2. Inicialização
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // 3. Evento de envio
+    const form = document.getElementById("formProjeto");
+
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Captura dos valores pelos IDs que adicionamos no HTML
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const periodo = document.getElementById("periodo").value;
+            const descricao = document.getElementById("descricao").value;
+
+            try {
+                // Envio para a coleção "indicacoes_projetos"
+                await addDoc(collection(db, "projetos"), {
+                    nome: nome,
+                    email: email,
+                    periodo: periodo,
+                    descricao: descricao,
+                    criadoEm: serverTimestamp() // Melhor usar o tempo do servidor
+                });
+
+                alert("Projeto enviado com sucesso!");
+                form.reset();
+
+            } catch (erro) {
+                console.error("Erro detalhado:", erro);
+                alert("Erro ao enviar projeto. Verifique o console.");
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
